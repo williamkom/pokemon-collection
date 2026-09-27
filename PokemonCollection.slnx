@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/backend/">
+    <Project Path="backend/Pokemon.Api/Pokemon.Api.csproj" />
+    <Project Path="backend/Pokemon.Tests/Pokemon.Tests.csproj" />
+  </Folder>
+</Solution>
