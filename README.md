@@ -174,12 +174,12 @@ dotnet test backend/Pokemon.Tests/Pokemon.Tests.csproj
 
 Für die Umsetzung der Aufgabe wurden insgesamt ca. **[3,30] Stunden** benötigt:
 
-| Bereich / Phase                | Aufgaben                                                                                                                                                                     | Geschätzte Zeit     |
-| :----------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------ |
-| **Architektur & Planung**      | Analyse der Anforderungen, Technologieauswahl (.NET, Angular, Postgres), Entwurf des Datenbank- und Sicherheitskonzepts                                                      | ca. [15] Min.       |
-| **Backend-Entwicklung**        | ASP.NET Core API Setup, Entity Framework Core Models & Migrationen, JWT-Authentifizierung & Passwort-Hashing, PokéAPI-Integration, Collection-Management                     | ca. [1,30] Std.     |
-| **Frontend-Entwicklung**       | Angular Projekt-Setup (Standalone Components, Signals), Authentifizierungs-Flow (Login, `authGuard`, `authInterceptor`), Pokémon-Übersicht & Detailkarten, Sammlungs-Ansicht | ca. [30] Std.       |
-| **Containerisierung & DevOps** | Dockerfiles für Backend und Frontend (Multi-Stage Builds), Nginx Reverse-Proxy-Konfiguration, `docker-compose.yml` mit Healthchecks                                          | ca. [30] Min.       |
+| Bereich / Phase                | Aufgaben                                                                                                                                                                     | Geschätzte Zeit        |
+| :----------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------- |
+| **Architektur & Planung**      | Analyse der Anforderungen, Technologieauswahl (.NET, Angular, Postgres), Entwurf des Datenbank- und Sicherheitskonzepts                                                      | ca. [15] Min.          |
+| **Backend-Entwicklung**        | ASP.NET Core API Setup, Entity Framework Core Models & Migrationen, JWT-Authentifizierung & Passwort-Hashing, PokéAPI-Integration, Collection-Management                     | ca. [1,30] Std.        |
+| **Frontend-Entwicklung**       | Angular Projekt-Setup (Standalone Components, Signals), Authentifizierungs-Flow (Login, `authGuard`, `authInterceptor`), Pokémon-Übersicht & Detailkarten, Sammlungs-Ansicht | ca. [30] Min.          |
+| **Containerisierung & DevOps** | Dockerfiles für Backend und Frontend (Multi-Stage Builds), Nginx Reverse-Proxy-Konfiguration, `docker-compose.yml` mit Healthchecks                                          | ca. [30] Min.          |
 | **Testing & Bugfixing**        | Integrationstests im Backend, Manuelles E2E-Testing im Browser ca. [30] Min.                                                                                                 |
-| **Dokumentation**              | Ausführliche `README.md` mit reproduzierbaren Startanleitungen (Docker & Lokal), API- und Architekturübersicht                                                               | ca. [15] Min.       |
-| **Gesamtaufwand**              |                                                                                                                                                                              | **ca. [X] Stunden** |
+| **Dokumentation**              | Ausführliche `README.md` mit reproduzierbaren Startanleitungen (Docker & Lokal), API- und Architekturübersicht                                                               | ca. [15] Min.          |
+| **Gesamtaufwand**              |                                                                                                                                                                              | **ca. [3.30] Stunden** |
