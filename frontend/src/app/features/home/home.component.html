@@ -1,0 +1,169 @@
+<div class="page">
+  <header class="header">
+    <div>
+      <h1>Pokémon Collection</h1>
+      @if (authService.trainer(); as trainer) {
+        <p class="trainer">
+          Signed in as
+          <strong>
+            {{ trainer.email }}
+          </strong>
+        </p>
+      }
+    </div>
+
+    <button class="logout" type="button" (click)="logout()">Logout</button>
+  </header>
+
+  @if (errorMessage()) {
+    <div class="error-message">
+      {{ errorMessage() }}
+    </div>
+  }
+
+  <main class="layout">
+    <!-- Pokémon catalogue -->
+
+    <section class="catalog">
+      <div class="section-header">
+        <div>
+          <h2>Pokémon</h2>
+
+          <p>Discover Pokémon and add them to your collection.</p>
+        </div>
+
+        <span class="page-number"> Page {{ page() + 1 }} </span>
+      </div>
+
+      @if (pokemonLoading()) {
+        <div class="loading">Loading Pokémon...</div>
+
+      } @else if (pokemon().length === 0) {
+        <div class="empty">No Pokémon found.</div>
+
+      } @else {
+        <div class="pokemon-grid">
+          @for (item of pokemon(); track item.id) {
+            <article class="pokemon-card">
+              <div class="image-wrapper">
+                @if (item.imageUrl) {
+                  <img [src]="item.imageUrl" [alt]="item.name" />
+
+                } @else {
+                  <div class="image-placeholder">No image</div>
+                }
+              </div>
+
+              <div class="pokemon-content">
+                <div class="pokemon-number">#{{ item.id }}</div>
+
+                <h3>
+                  {{ formatName(item.name) }}
+                </h3>
+
+                <div class="types">
+                  @for (type of item.types; track type) {
+                    <span class="type">
+                      {{ type }}
+                    </span>
+                  }
+                </div>
+
+                <div class="details">
+                  <span>
+                    {{ heightInMeters(item) }}
+                    m
+                  </span>
+
+                  <span>
+                    {{ weightInKilograms(item) }}
+                    kg
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  class="add-button"
+                  [disabled]="isInCollection(item.id) || addingPokemonId() === item.id"
+                  (click)="addPokemon(item)"
+                >
+                  @if (isInCollection(item.id)) {
+                    In collection
+
+                  } @else if (addingPokemonId() === item.id) {
+                    Adding...
+
+                  } @else {
+                    Add to collection
+                  }
+                </button>
+              </div>
+            </article>
+          }
+        </div>
+      }
+
+      <div class="pagination">
+        <button
+          type="button"
+          [disabled]="!hasPreviousPage() || pokemonLoading()"
+          (click)="previousPage()"
+        >
+          Previous
+        </button>
+
+        <span> Page {{ page() + 1 }} </span>
+
+        <button type="button" [disabled]="!hasNextPage() || pokemonLoading()" (click)="nextPage()">
+          Next
+        </button>
+      </div>
+    </section>
+
+    <!-- Personal collection -->
+
+    <aside class="collection">
+      <div class="section-header">
+        <div>
+          <h2>My Collection</h2>
+
+          <p>
+            {{ collection().length }}
+            Pokémon
+          </p>
+        </div>
+      </div>
+
+      @if (collectionLoading()) {
+        <div class="loading">Loading collection...</div>
+
+      } @else if (collection().length === 0) {
+        <div class="empty">Your collection is empty.</div>
+
+      } @else {
+        <div class="collection-list">
+          @for (entry of collection(); track entry.pokemonId) {
+            <div class="collection-item">
+              @if (entry.pokemon.imageUrl) {
+                <img [src]="entry.pokemon.imageUrl" [alt]="entry.pokemon.name" />
+              }
+
+              <div>
+                <strong>
+                  {{ formatName(entry.pokemon.name) }}
+                </strong>
+
+                <div class="types">
+                  @for (type of entry.pokemon.types; track type) {
+                    <span class="type small">
+                      {{ type }}
+                    </span>
+                  }
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      }
+    </aside>
+  </main>
+</div>
